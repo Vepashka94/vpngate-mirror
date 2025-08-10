@@ -1,0 +1,28 @@
+name: Update VPNGate CSV
+
+on:
+  schedule:
+    - cron: "0 */6 * * *" # Her 6 sagatda bir gezek täzelär
+  workflow_dispatch: # El bilen işledip bolar
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo klonla
+        uses: actions/checkout@v3
+
+      - name: CSV faýlyny API-den al
+        run: |
+          curl -s https://www.vpngate.net/api/iphone/ -o vpngate.csv
+
+      - name: Git konfigurasiýasy
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Üýtgeşikleri commit et we ýükle
+        run: |
+          git add vpngate.csv
+          git commit -m "Auto update VPNGate CSV" || echo "No changes"
+          git push
