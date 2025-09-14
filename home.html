@@ -2,54 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>VPN Gate Mirror</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    table { border-collapse: collapse; width: 100%; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background-color: #f2f2f2; }
-  </style>
+  <title>VPNGate Mirror</title>
 </head>
 <body>
-  <h1>VPN Gate Server List (Mirror)</h1>
-  <p>Bu sahypa awtomatiki ýagdaýda täze VPN Gate serwerlerini görkezýär 👶</p>
-
-  <table id="vpnTable">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>IP</th>
-        <th>Country</th>
-        <th>Ping</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-
-  <script>
-    // CSV URL (GitHub-dan alýarys)
-    const csvUrl = "https://raw.githubusercontent.com/Vepashka94/vpngate-mirror/main/vpngate.csv";
-
-    fetch(csvUrl)
-      .then(res => res.text())
-      .then(text => {
-        const rows = text.split("\n").slice(2); // ilkinji 2 setir maglumat däl
-        const table = document.querySelector("#vpnTable tbody");
-
-        rows.forEach((row, index) => {
-          const cols = row.split(",");
-          if (cols.length > 6) {
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-              <td>${index + 1}</td>
-              <td>${cols[1]}</td>
-              <td>${cols[6]}</td>
-              <td>${cols[2]}</td>
-            `;
-            table.appendChild(tr);
-          }
-        });
-      });
-  </script>
+  <h1>VPNGate Mirror</h1>
+  <p>Bu sahypa awtomatiki täzelenýär...</p>
 </body>
 </html>
